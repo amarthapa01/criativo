@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+    background-image: url("/images/game.jpeg");
+    background-size: fit;
+    background-position: center;
+    width: 100%;
+  height: 300px;
+    border-radius: 0 0 50% 50% / 20%;
+  }
+
+  #name1{
+    width: 400px;
+    height: 30px;
+    margin-right: 50px;
+    margin-top: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  #name2{
+    width: 400px;
+    height: 30px;
+    margin-right: 50px;
+    margin-top: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+ button{
+    width: 200px;
+    height: 30px;
+    margin-right: 50px;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: rgb(229, 145, 187);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #result {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #140707; /* Deep pink color for the result */
+  }
+  img{
+    width: 50px;
+    height: 50px;
+  }
+</style>
+</head>
+<body>
+  
+  <h2>Love Calculator</h2>
+  <input type="text" id="name1" placeholder="Enter your name"><br><br>
+  <input type="text" id="name2" placeholder="Enter your crush's name"><br>
+  
+  <button onclick="calculateLove()">Calculate</button>
+  <div id="result"></div>
+</div>
+  <script>
+    function calculateLove() {
+      var name1 = document.getElementById('name1').value;
+      var name2 = document.getElementById('name2').value;
+      var combinedNames = name1.toUpperCase() + name2.toLowerCase();
+      var score = 0;
+      for (var i = 0; i < combinedNames.length; i++) {
+        score += combinedNames.charCodeAt(i);
+      }
+      score = score % 100;
+
+      // Start the animation from 0 to the calculated score
+      var currentScore = 0;
+      var interval = setInterval(function() {
+        if (currentScore <= score) {
+          document.getElementById('result').innerText = name1 + " lia " + name2 + " lai " + currentScore + "%" + " maya garnu hunxa";
+          currentScore++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 50); // The number 50 here represents the speed of the animation
+    }
+  </script>
+</body>
+</html>
